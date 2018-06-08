@@ -11,7 +11,7 @@
 		}
 		
 		#${id} {
-			position: absolute;
+			position: fixed;
 			bottom: 0;
 			right: 0;
 			padding: 5px 10px;
