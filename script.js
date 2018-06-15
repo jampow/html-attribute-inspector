@@ -1,4 +1,4 @@
-(() => {
+((attribute) => {
 	const delegate = (elSelector, eventName, selector, fn) => {
 		var element = document.querySelector(elSelector);
 
@@ -21,13 +21,13 @@
 		});
 	}
 
-	const id = 'qa-inspector';
+	const id = 'attr-inspector';
 	const head = document.getElementsByTagName('head')[0];
 	const body = document.getElementsByTagName('body')[0];
 
 	const style = document.createElement('style');
 	style.innerText = `
-		[data-qa] {
+		[${attribute}] {
 			border:red 1px solid !important;
 			position:relative !important;
 		}
@@ -46,7 +46,7 @@
 	head.appendChild(style);
 	body.appendChild(insp);
 
-	delegate('body', 'mouseover', '[data-qa]', ev => {
-		document.getElementById(id).innerText = ev.target.getAttribute('data-qa')
+	delegate('body', 'mouseover', `[${attribute}]`, ev => {
+		document.getElementById(id).innerText = ev.target.getAttribute(attribute)
 	})
-})()
+})('data-qa')
